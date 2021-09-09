@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,14 +9,15 @@ public class Banco {
 	
 	
 	private static List<Empresa> empresas = new ArrayList<>();
+	private static List<Usuario> usuarios = new ArrayList<>();
 	
 	static {
 		
-		Empresa empresa = new Empresa("Alura",42);
-		Empresa empresa2 = new Empresa("Caelum",84);
+		empresas.add(new Empresa("Alura",42));
+		empresas.add(new Empresa("Caelum",84));
 		
-		empresas.add(empresa);
-		empresas.add(empresa2);
+		usuarios.add(new Usuario("antony","123"));
+		usuarios.add(new Usuario("guilherme","123"));
 		
 	}
 	
@@ -30,23 +31,7 @@ public class Banco {
 	}
 
 	public boolean deletarEmpresa(Integer id) {
-		
 		return empresas.removeIf((empresa) -> empresa.getId() == id);
-		
-		//procurando a empresa na lista
-		/*
-		this.getEmpresa(id)
-		.ifPresentOrElse((empresa) -> {
-			
-			//removendo a empresa
-			empresas.remove(empresa);
-			
-		}
-		,()->{
-			throw new NoSuchElementException("A empresa não foi encontrada!");
-		});
-		
-		*/
 	}
 	
 	public Optional<Empresa> getEmpresa(Integer id) {
@@ -54,6 +39,13 @@ public class Banco {
 		return Banco.empresas.stream()
 				.filter((Empresa empresa) -> empresa.getId() == id)
 				.findFirst();
+		
+	}
+
+	public boolean existeUsuario(Usuario usuarioParaComparar) {
+		
+		return Banco.usuarios.stream()
+		.anyMatch((usuario) -> usuario.equals(usuarioParaComparar));
 		
 	}
 	

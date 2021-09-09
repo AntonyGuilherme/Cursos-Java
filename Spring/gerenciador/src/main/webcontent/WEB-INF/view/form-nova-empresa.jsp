@@ -1,14 +1,16 @@
 
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:url value="/nova-empresa" var="linkServeltNovaEmpresa"/>   
+<c:url value="/entrada?acao=NovaEmpresa" var="linkServeltNovaEmpresa"/>   
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-
+	
+	<c:import url="logout-parcial.jsp"/>
+	<br>
 	
 	<form action="${linkServeltNovaEmpresa}" method="post">
 	

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/altera-empresa" var="linkServeltNovaEmpresa"/>   
+<c:url value="/entrada" var="linkServeltNovaEmpresa"/>   
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<c:import url="logout-parcial.jsp"/>
+	<br>
 	
 	<form action="${linkServeltNovaEmpresa}" method="post">
 	
@@ -25,7 +27,8 @@
 		</div>
 		
 		<div>
-			<input id="id" name="id" type="hidden" value="${empresa.id}"  />
+			<input id="id" name="id" type="hidden" value="${empresa.id}"/>
+			<input id="acao" name="acao" type="hidden" value="AlteraEmpresa"/>
 		</div>
 		
 		<input type="submit" />
