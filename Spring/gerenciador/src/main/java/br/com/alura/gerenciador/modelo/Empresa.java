@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.modelo;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -10,7 +10,7 @@ public class Empresa {
 	private Integer id;
 	private String nome;
 	private Date dataAbertura = new Date();
-	private LocalDateTime dataAberturaLocalDateTime = LocalDateTime.now();
+	//private LocalDateTime dataAberturaLocalDateTime = LocalDateTime.now();
 	
 	public Empresa(String nome,Integer id) {
 		this.setId(id);
@@ -47,17 +47,17 @@ public class Empresa {
 		return dataAbertura;
 	}
 	
-	public LocalDateTime getDataAberturaLocalDateTime() {
-		return dataAberturaLocalDateTime;
-	}
+	//public LocalDateTime getDataAberturaLocalDateTime() {
+	//	return dataAberturaLocalDateTime;
+	//}
 	
-	public void setDataAberturaLocalDateTime(
-			LocalDateTime dataAbertLocalDateTime) {
+	//public void setDataAberturaLocalDateTime(
+	//		LocalDateTime dataAbertLocalDateTime) {
 		
-		this.dataAberturaLocalDateTime = dataAbertLocalDateTime;
+		//this.dataAberturaLocalDateTime = dataAbertLocalDateTime;
 		
 		
-	}
+	//}
 	
 	public void setDataAbertura(Date dataAbertura) {
 		this.dataAbertura = dataAbertura;

@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="br.com.alura.gerenciador.servlet.Empresa"%>
+<%@page import="br.com.alura.gerenciador.modelo.Empresa"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -11,8 +11,13 @@
 <title>Java Standard Taglib</title>
 </head>
 <body>
+	
+	<c:import url="logout-parcial.jsp"/>
+	<br>
+	<h1> Usuario Logado ${usuarioLogado}</h1>
 
 	<h1> Empresas Cadastradas </h1>
+	
 	
 	
 	<ul>
@@ -27,8 +32,8 @@
 		value="${empresa.dataAbertura}" 
 		pattern="dd/MM/yyyy"/> 
 		
-		<a href="mostra-empresa?id=${empresa.id}">Editar</a>
-		<a href="remover-empresa?id=${empresa.id}">Remover</a>
+		<a href="entrada?acao=MostraEmpresa&id=${empresa.id}">Editar</a>
+		<a href="entrada?acao=RemoverEmpresa&id=${empresa.id}">Remover</a>
 		
 		
 		</li>
