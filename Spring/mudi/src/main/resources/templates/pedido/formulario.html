@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+
+<head th:replace="~{base :: head}"></head>
+
+<body>
+
+	<div th:replace="~{base :: logo}"></div>
+
+	<div class="container">
+
+		<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+
+		<div class="card  mt-3">
+			<form th:object="${requisicaoNovoPedido}" th:action="@{/pedido/novo}"
+				method="post" class="card-body">
+
+				<div class="mb-3">
+					<label for="nomeProduto" class="form-label">Produto</label> <input
+						th:field="*{nomeProduto}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Informe o nome do produto:" />
+					<div class="form-text">Informa qual o nome do produto.</div>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}">
+						Erros do nome do produto</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="urlProduto" class="form-label">Url</label> <input
+						th:field="*{urlProduto}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Url do Produto" />
+					<div class="form-text">Procure em um site o produto que você
+						deseja e colo a url da página.</div>
+					<div class="invalid-feedback" th:errors="*{urlProduto}">
+						Erros do nome do produto</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="urlImagem" class="form-label">Imagem</label> <input
+						th:field="*{urlImagem}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Url da Imagem" />
+					<div class="form-text">Copie a url de uma boa imagem do
+						produto e colo aqui para ajudar a encontrar compradores</div>
+					<div class="invalid-feedback" th:errors="*{urlImagem}"></div>
+				</div>
+
+				<div class="mb-3">
+					<label for="descricao" class="form-label">Descricao</label>
+					<textarea th:field="*{descricao}" class="form-control"
+						placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+					<div class="form-text">Copie a url de uma boa imagem do
+						produto e colo aqui para ajudar a encontrar compradores</div>
+				</div>
+
+				<button class="btn btn-primary" type="submit">Cadastrar</button>
+
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
