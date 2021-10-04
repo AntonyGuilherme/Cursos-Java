@@ -1,10 +1,8 @@
 package br.com.alura.rh.model;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 
-import br.com.alura.rh.ValidacaoException;
 
 public class Funcionario {
 
