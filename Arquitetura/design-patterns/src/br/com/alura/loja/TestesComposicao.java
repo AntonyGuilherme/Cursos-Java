@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import br.com.alura.loja.orcamento.ItemOrcamento;
 import br.com.alura.loja.orcamento.Orcamento;
+import br.com.alura.loja.orcamento.OrcavelProxy;
 
 public class TestesComposicao {
     
@@ -17,7 +18,10 @@ public class TestesComposicao {
         antigo.adicionarItens(new ItemOrcamento(BigDecimal.TEN));
         novoOrcamento.adicionarItens(antigo);
 
-        System.out.println(novoOrcamento.getValor());
+        OrcavelProxy orcamentoProxy = new OrcavelProxy(novoOrcamento);
+
+        System.out.println(orcamentoProxy.getValor());
+        System.out.println(orcamentoProxy.getValor());
 
     }
 
