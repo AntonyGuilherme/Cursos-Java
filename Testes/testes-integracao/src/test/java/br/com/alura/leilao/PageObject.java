@@ -1,6 +1,7 @@
 package br.com.alura.leilao;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,8 +11,15 @@ public class PageObject {
 	private WebDriver browser;
 
 	public PageObject() {
+		
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		this.browser = new ChromeDriver();
+		
+		this.browser
+		.manage()
+		.timeouts()
+		.implicitlyWait(5, TimeUnit.SECONDS) //configurando o tempo de espera em cada busca de elemento
+		.pageLoadTimeout(10, TimeUnit.SECONDS); // configurando o tempo de espera para o carregamento de uma página
 	}
 
 	public PageObject(WebDriver browser) {
