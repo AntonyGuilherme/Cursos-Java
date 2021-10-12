@@ -45,7 +45,7 @@ public class LoginTest {
 		
 		assertTrue(paginaDeLogin.isPaginaDeLogin());
 		assertNull(paginaDeLogin.getNomeDoUsuarioLogado());
-		assertTrue(paginaDeLogin.contemTexto("Usuário e senha inválidos."));
+		assertTrue(paginaDeLogin.contemTextos("Usuário e senha inválidos."));
 		
 	}
 	
@@ -54,7 +54,7 @@ public class LoginTest {
 		
 		this.paginaDeLogin.direcionarPara("http://localhost:8080/leiloes/2");
 		assertTrue(this.paginaDeLogin.isPaginaDeLogin());
-		assertFalse(this.paginaDeLogin.contemTexto("Dados do Leilão"));
+		assertFalse(this.paginaDeLogin.contemTextos("Dados do Leilão"));
 	
 	}
 	
