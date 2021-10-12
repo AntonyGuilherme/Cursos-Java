@@ -29,8 +29,9 @@ public class LoginTest {
 	@Test
 	public void deveriaEfetuarOLoginComDadosValidos() {
 		
-		this.paginaDeLogin.preencherFormularioDeLogin("fulano", "pass");
-		this.paginaDeLogin.efetuarLogin();
+		this.paginaDeLogin
+		.preencherFormularioDeLogin("fulano", "pass")
+		.efetuarLogin();
 		
 		assertFalse(paginaDeLogin.isPaginaDeLogin());
 		assertEquals(paginaDeLogin.getNomeDoUsuarioLogado(),"fulano");
@@ -40,8 +41,9 @@ public class LoginTest {
 	@Test
 	public void naoDeveriaEfetuarOLoginComDadosInvalidos() {
 		
-		this.paginaDeLogin.preencherFormularioDeLogin("invalido", "invalido");
-		this.paginaDeLogin.efetuarLogin();
+		this.paginaDeLogin
+		.preencherFormularioDeLogin("invalido", "invalido")
+		.efetuarLogin();
 		
 		assertTrue(paginaDeLogin.isPaginaDeLogin());
 		assertNull(paginaDeLogin.getNomeDoUsuarioLogado());

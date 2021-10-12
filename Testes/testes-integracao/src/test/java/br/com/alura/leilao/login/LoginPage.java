@@ -2,6 +2,7 @@ package br.com.alura.leilao.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 
 import br.com.alura.leilao.PageObject;
 import br.com.alura.leilao.leiloes.LeiloesPage;
@@ -15,9 +16,16 @@ public class LoginPage extends PageObject {
 		this.direcionarPara(URL_LOGIN);
 	}
 	
-	public void preencherFormularioDeLogin(String username , String password) {
+	public LoginPage(WebDriver browser) {
+		super(browser);
+		this.direcionarPara(URL_LOGIN);
+	}
+	
+	public LoginPage preencherFormularioDeLogin(String username , String password) {
 		super.getBrowser().findElement(By.id("username")).sendKeys(username);
 		super.getBrowser().findElement(By.id("password")).sendKeys(password);
+		
+		return this;
 	}
 
 	public LeiloesPage efetuarLogin() {

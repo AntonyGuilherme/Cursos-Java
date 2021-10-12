@@ -21,9 +21,12 @@ public class LeiloesTest {
 	@BeforeEach
 	public void beforeEach() {
 		LoginPage paginaDeLogin = new LoginPage();
-		paginaDeLogin.preencherFormularioDeLogin("fulano", "pass");
-		this.paginaDeLeiloes = paginaDeLogin.efetuarLogin();
-		paginaDeCadastroDeLeiloes = this.paginaDeLeiloes.navegarParaFormularioDeCriacaoDeLeiloes();
+		
+		this.paginaDeLeiloes = paginaDeLogin
+		.preencherFormularioDeLogin("fulano", "pass")
+		.efetuarLogin();
+		
+		this.paginaDeCadastroDeLeiloes = this.paginaDeLeiloes.navegarParaFormularioDeCriacaoDeLeiloes();
 	}
 	
 	@AfterEach
@@ -41,7 +44,8 @@ public class LeiloesTest {
 		String nome = "Leilao do dia " + hoje;
 		String valor = "500.00";
 		
-		this.paginaDeLeiloes = paginaDeCadastroDeLeiloes.cadastrarLeilao(nome,valor,hoje);
+		this.paginaDeLeiloes = this.cadastrarLeilao(nome,valor,hoje);
+		
 		assertTrue(paginaDeLeiloes.isLeilaoCadastrado(nome,valor,hoje));
 		
 	}
@@ -49,10 +53,17 @@ public class LeiloesTest {
 	@Test
 	public void deveriaImpedirOCadastroDeLeiloesComDadosInvalidos() {
 		
-		this.paginaDeLeiloes = paginaDeCadastroDeLeiloes.cadastrarLeilao("","","");
+		this.paginaDeLeiloes = this.cadastrarLeilao("","","");
+		
 		assertTrue(this.paginaDeLeiloes.isPaginaLeiloes());
 		assertTrue(this.paginaDeCadastroDeLeiloes.isMensagensDeValidacoesVisiveis());
 		
+	}
+	
+	private LeiloesPage cadastrarLeilao(String nome, String valor, String hoje) {
+		return this.paginaDeCadastroDeLeiloes
+				.preencherFormularioDeCadastroDeLeilao(nome, valor, hoje)
+				.enviarFormularioDeCadastro();
 	}
 	
 

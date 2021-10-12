@@ -3,7 +3,9 @@ package br.com.alura.leilao;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PageObject {
@@ -48,6 +50,24 @@ public class PageObject {
 				.map(codigoDaPagina::contains)
 				.allMatch((validacaoDoTexto) -> validacaoDoTexto);
 
+	}
+	
+	protected WebElement buscarPorUltimaLinhaDaTabela(String idTabela) {
+		String caminhoParaBusca = String.format("#%s tbody tr:last-child", idTabela);
+		By buscarPorTagCssAUltimaLinha = this.BuscarPorTagCss(caminhoParaBusca);
+		return this.browser.findElement(buscarPorTagCssAUltimaLinha);
+	}
+
+	protected WebElement buscarPorItemDaLinhaDaTabela(WebElement linhaDaTabela, Integer indexDoItem) {
+
+		String expressaoParaBusca = String.format("td:nth-child(%d)", indexDoItem);
+		By buscarPorTagCssUmItemDaLinha = this.BuscarPorTagCss(expressaoParaBusca);
+
+		return linhaDaTabela.findElement(buscarPorTagCssUmItemDaLinha);
+	}
+
+	protected By BuscarPorTagCss(String expressao) {
+		return By.cssSelector(expressao);
 	}
 
 }
