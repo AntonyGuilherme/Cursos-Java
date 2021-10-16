@@ -61,18 +61,6 @@ public class PropondoLancesSteps {
 
 	}
 
-	/*
-	 * @Dado("varios lances validos") public void varios_lances_validos() {
-	 * 
-	 * Usuario usuario1 = new Usuario("fulano"); this.lance10 = new Lance(usuario1,
-	 * BigDecimal.TEN);
-	 * 
-	 * Usuario usuario2 = new Usuario("beltrano"); this.lance15 = new
-	 * Lance(usuario2, new BigDecimal("15.0"));
-	 * 
-	 * 
-	 * }
-	 */
 
 	@Dado("um lance de {double} reais do usuario {string}")
 	public void um_lance_de_reais_do_usuario(Double valorLance, String nomeDoUsuario) {
