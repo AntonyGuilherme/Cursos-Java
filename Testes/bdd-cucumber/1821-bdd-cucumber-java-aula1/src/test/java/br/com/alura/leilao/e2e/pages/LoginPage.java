@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.com.alura.leilao.model.Usuario;
+
 public class LoginPage {
 
 	private WebDriver driver;
@@ -28,6 +30,10 @@ public class LoginPage {
         txtNome.submit();
                 
         return new LeiloesPage(driver);
+    }
+    
+    public LeiloesPage realizaLoginComo(Usuario usuario) {
+    	return this.realizaLoginComo(usuario.getNome(), usuario.getSenha());
     }
     
     public LeiloesPage realizaLoginComoFulano() {

@@ -4,8 +4,18 @@ import br.com.alura.leilao.model.Usuario;
 
 public class UsuarioFactory {
 
-	public Usuario criarUsuarioComNome(String nome){
-		return new Usuario(nome);
+	public Usuario criarComNome(String nome){
+		return this.criarUsuario(nome,null,null);
 	}
+	
+	public Usuario criarComNomeESenha(String nomeDeUsuario, String senha) {
+		return this.criarUsuario(nomeDeUsuario, null, senha);
+	}
+	
+	
+	private Usuario criarUsuario(String nome,String email,String senha) {
+		return new Usuario(nome,email,senha);
+	}
+	
 	
 }

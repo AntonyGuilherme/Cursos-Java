@@ -23,7 +23,7 @@ public class LanceFactory {
 	}
 	
 	private Usuario criarUsuario(String nomeDoUsuario) {
-		return new UsuarioFactory().criarUsuarioComNome(nomeDoUsuario);
+		return new UsuarioFactory().criarComNome(nomeDoUsuario);
 	}
 	
 	
