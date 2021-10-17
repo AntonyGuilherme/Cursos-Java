@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import br.com.alura.leilao.model.Lance;
 import br.com.alura.leilao.model.Leilao;
@@ -20,19 +22,17 @@ public class PropondoLancesSteps {
 	private Lance lance;
 	private Leilao leilao;
 	private ArrayList<Lance> lista;
-	
-	
+
 	@Before
 	public void setUp() {
 		this.lista = new ArrayList<Lance>();
 		leilao = new Leilao("Tablet XPTO");
 	}
-	
+
 	@After
 	public void tearDown() {
-		
+
 	}
-	
 
 	@Dado("um lance valido")
 	public void dado_um_lance_valido() {
@@ -61,15 +61,14 @@ public class PropondoLancesSteps {
 
 	}
 
-
 	@Dado("um lance de {double} reais do usuario {string}")
 	public void um_lance_de_reais_do_usuario(Double valorLance, String nomeDoUsuario) {
-		
+
 		Usuario usuario = new Usuario(nomeDoUsuario);
 		BigDecimal valorConvertido = new BigDecimal(valorLance);
-		Lance lance = new Lance(usuario,valorConvertido);
+		Lance lance = new Lance(usuario, valorConvertido);
 		this.lista.add(lance);
-		
+
 	}
 
 	@Quando("propoe varios lances ao leilao")
@@ -88,7 +87,7 @@ public class PropondoLancesSteps {
 		Lance lanceInseridoComValor15 = leilao.getLances().get(1);
 		BigDecimal valorCriado10 = this.lista.get(0).getValor();
 		BigDecimal valorCriado15 = this.lista.get(1).getValor();
-		
+
 		assertEquals(quantidadeDeLancesPropostos, quantidadeDeLancesCriados);
 		assertNotNull(lanceInseridoComValor10);
 		assertNotNull(lanceInseridoComValor15);
@@ -97,4 +96,57 @@ public class PropondoLancesSteps {
 
 	}
 
+	@Dado("um lance invalido de {double} reais do usuario {string}")
+	public void um_lance_invalido_de_valor_reais(Double valorLance, String nomeDoUsuario) {
+
+		Usuario usuario = new Usuario(nomeDoUsuario);
+		BigDecimal valorConvertido = new BigDecimal(valorLance);
+		
+		try {
+		Lance lance = new Lance(usuario, valorConvertido);
+		this.lista.add(lance);
+		}catch (IllegalArgumentException exception) {
+			assertNotNull(exception);
+		}
+
+	}
+
+	@Entao("o lance nao eh aceito")
+	public void o_lance_nao_eh_aceito() {
+
+		Integer quantidadeDeLancesPropostos = leilao.getLances().size();
+		assertEquals(0,quantidadeDeLancesPropostos);
+
+	}
+	
+	@Entao("o segundo lance nao eh aceito")
+	public void o_segundo_lance_nao_eh_aceito() {
+		Integer quantidadeDeLancesPropostos = leilao.getLances().size();
+		Lance lanceInserido = leilao.getLances().get(0);
+		assertEquals(1, quantidadeDeLancesPropostos);
+		assertEquals(BigDecimal.TEN, lanceInserido.getValor());
+		
+	}
+	
+	@Dado("dois lances")
+	public void dois_lances(io.cucumber.datatable.DataTable dataTable) {
+	    
+		List<Map<String, String>> dadosDoslances = dataTable.asMaps();
+		LanceFactory lanceFactory = new LanceFactory();
+		
+		
+		dadosDoslances.stream()
+		.map(lanceFactory::criarPorDataTable)
+		.forEach(lista::add);
+		
+	}
+
+	
+	
+	
 }
+
+
+
+
+

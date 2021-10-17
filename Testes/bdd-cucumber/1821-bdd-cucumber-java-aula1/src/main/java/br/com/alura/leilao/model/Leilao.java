@@ -129,6 +129,10 @@ public class Leilao {
 
 	public boolean propoe(Lance lanceAtual) {
 		
+		if(lanceAtual == null) {
+			return false;			
+		}
+		
 		if (this.estaSemLances() || ehUmLanceValido(lanceAtual)) {
 			adicionarLance(lanceAtual);
 			return true;
