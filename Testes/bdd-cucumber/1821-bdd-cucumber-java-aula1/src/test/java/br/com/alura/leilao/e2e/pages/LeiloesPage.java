@@ -1,6 +1,8 @@
 package br.com.alura.leilao.e2e.pages;
 
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,11 +23,24 @@ public class LeiloesPage {
 		driver.get(PAGE_URL);
 	}
 
-	public boolean existe(String nomeProduto, String valor, String usuario) {
-		return driver.getCurrentUrl().endsWith("/leiloes") && driver.getPageSource().contains(nomeProduto) && 
-				driver.getPageSource().contains(valor);
+	public boolean existe(String ...valores) {
+		
+		List<String> listaDeValores = List.of(valores);
+		
+		return this.isTodosOsItensContidosNaPagina(listaDeValores);
 	}
 
+	private Boolean isTodosOsItensContidosNaPagina(List<String> itens) {
+		
+		String conteudoDaPagina = driver.getPageSource();
+		Boolean isNotItensContidosNaPagina  = itens.stream()
+				.map(conteudoDaPagina::contains)
+				.anyMatch((resultadoDaBusca) -> !resultadoDaBusca);
+		
+		return !isNotItensContidosNaPagina;
+		
+	}
+	
 	public NovoLeilaoPage visitaPaginaParaCriarUmNovoLeilao() {
 		
 		WebDriverWait wait = new WebDriverWait(driver,5);
