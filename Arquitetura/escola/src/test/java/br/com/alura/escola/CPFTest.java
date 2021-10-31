@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import br.com.alura.escola.dominio.aluno.CPF;
+
 class CPFTest {
 
 	@Test
@@ -15,11 +17,23 @@ class CPFTest {
 		assertEquals(valorDoCPF,cpf.getCpf());
 	}
 	
+	
+	@Test
+	public void naoDeveriaCriarUmCPFComUmNumeroNulo() {
+		
+		assertThrows(IllegalArgumentException.class, () -> new CPF(null));		
+	}
+	
+	@Test
+	public void naoDeveriaCriarUmCPFComUmNumeroVazio() {
+		
+		assertThrows(IllegalArgumentException.class, () -> new CPF(""));		
+	}
+
 	@Test
 	void naoDeveriaCriarUmCpfComNumerosInvalidos() {
 		
-		assertThrows(IllegalArgumentException.class, () -> new CPF("324.227.11"));
-		assertThrows(IllegalArgumentException.class, () -> new CPF(null));
+		assertThrows(IllegalArgumentException.class, () -> new CPF("324.227.11"));		
 	}
-
+	
 }

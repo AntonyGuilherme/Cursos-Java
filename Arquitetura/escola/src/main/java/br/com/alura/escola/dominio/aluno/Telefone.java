@@ -1,4 +1,4 @@
-package br.com.alura.escola;
+package br.com.alura.escola.dominio.aluno;
 
 public class Telefone {
 
@@ -7,6 +7,7 @@ public class Telefone {
 	
 	public Telefone(String ddd, String numero) {
 		this.setDD(ddd);
+		this.setNumero(numero);
 	}
 	
 	public void setDD(String ddd){
@@ -36,7 +37,7 @@ public class Telefone {
 	
 	private Boolean isNumeroInvalido(String numero) {
 		
-		return !this.isItemDoTelefoneValido(numero, "\\d{8}\\d{9}");
+		return !this.isItemDoTelefoneValido(numero, "\\d{8}|\\d{9}");
 	}
 	
 	private Boolean isItemDoTelefoneValido(String item, String regex) {

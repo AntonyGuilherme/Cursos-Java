@@ -1,4 +1,6 @@
-package br.com.alura.escola;
+package br.com.alura.escola.dominio.aluno;
+
+import java.util.Objects;
 
 public class CPF {
 
@@ -30,6 +32,27 @@ public class CPF {
 	public String getCpf() {
 		return this.cpf;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cpf);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CPF other = (CPF) obj;
+		return Objects.equals(cpf, other.cpf);
+	}
+	
+	
 	
 	
 }
