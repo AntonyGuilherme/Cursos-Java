@@ -1,6 +1,7 @@
 package br.com.alura.escola.dominio.aluno;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,10 +29,19 @@ public class Aluno {
 		return this.email.getEmail();
 	}
 	
+	public String getCPF() {
+
+		return this.cpf.getCpf();
+	}
 	
 	public void adicionaTelefone(String ddd, String numero) {
 		this.telefones.add(new Telefone(ddd,numero));
 	}
+	
+	public List<Telefone> getTelefones(){
+		return Collections.unmodifiableList(this.telefones);
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -49,6 +59,7 @@ public class Aluno {
 		Aluno other = (Aluno) obj;
 		return Objects.equals(cpf, other.cpf);
 	}
+
 
 	
 }
