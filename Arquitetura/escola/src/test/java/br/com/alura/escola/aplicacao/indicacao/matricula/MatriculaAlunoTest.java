@@ -31,6 +31,6 @@ class MatriculaAlunoTest {
 		assertEquals(email, alunoEncontrado.getEmail());
 		assertEquals(cpf, alunoEncontrado.getCPF());
 		
-	}
+	} 
 
 }
