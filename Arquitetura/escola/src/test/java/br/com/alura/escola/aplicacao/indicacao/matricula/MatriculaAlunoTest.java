@@ -13,7 +13,8 @@ class MatriculaAlunoTest {
 
 	@Test
 	void alunoDeveriaSerPersistido() {
-	
+		
+		
 		String cpf = "123.456.789-00";
 		String nome = "Fulano";
 		String email = "aluno@email.com";
