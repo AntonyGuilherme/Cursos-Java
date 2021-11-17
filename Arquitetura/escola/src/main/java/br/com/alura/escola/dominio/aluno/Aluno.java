@@ -5,8 +5,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import br.com.alura.escola.dominio.aluno.excessoes.AlunoNumeroDeTelefonesMaximoException;
+
 public class Aluno {
 
+	private static final Integer QUANTIDADE_TELEFONES_MAX = 2;
 	private CPF cpf;
 	private String nome;
 	private Email email;
@@ -34,7 +37,16 @@ public class Aluno {
 	}
 	
 	public void adicionaTelefone(String ddd, String numero) {
+		
+		if(!isQuantidadeDeTelefonesValidos()) {
+			throw new AlunoNumeroDeTelefonesMaximoException("Numero maximo de telefones ja atingido.");
+		}
+		
 		this.telefones.add(new Telefone(ddd,numero));
+	}
+	
+	private Boolean isQuantidadeDeTelefonesValidos() {
+		return this.telefones.size() < QUANTIDADE_TELEFONES_MAX;
 	}
 	
 	public List<Telefone> getTelefones(){
