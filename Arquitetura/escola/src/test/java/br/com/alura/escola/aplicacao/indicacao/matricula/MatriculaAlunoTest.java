@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import br.com.alura.escola.dominio.aluno.Aluno;
 import br.com.alura.escola.dominio.aluno.CPF;
 import br.com.alura.escola.dominio.aluno.RepositorioDeAlunos;
+import br.com.alura.escola.dominio.eventos.LogDeAlunoMatriculado;
+import br.com.alura.escola.dominio.eventos.PublicadorDeEventos;
 import br.com.alura.escola.infra.aluno.RepositorioDeAlunoEmMemoria;
 
 class MatriculaAlunoTest {
@@ -20,7 +22,9 @@ class MatriculaAlunoTest {
 		String email = "aluno@email.com";
 		
 		RepositorioDeAlunos repositorioDeAlunos = new RepositorioDeAlunoEmMemoria();
-		MatriculaAluno useCase = new MatriculaAluno(repositorioDeAlunos);
+		PublicadorDeEventos publicadorDeEventos = new PublicadorDeEventos();
+		publicadorDeEventos.adicionar(new LogDeAlunoMatriculado());
+		MatriculaAluno useCase = new MatriculaAluno(repositorioDeAlunos,publicadorDeEventos);
 		
 		MatriculaAlunoDTO matriculaDTO = new MatriculaAlunoDTO("Fulano", "aluno@email.com", "123.456.789-00");
 		useCase.matricular(matriculaDTO);
