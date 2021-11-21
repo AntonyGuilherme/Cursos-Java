@@ -20,8 +20,7 @@ public class AdicionarSeloAluno {
 		
 		RepositorioDeSelo repositorioDeSeloEmMemoria = new RepositorioDeSelosEmMemoria();
 		AdicionaSeloAluno adicionarSeloAluno = new AdicionaSeloAluno(repositorioDeSeloEmMemoria);
-		
-		AdicionaSeloDTO adicionaSeloDTO = new AdicionaSeloDTO("JAVA", aluno);
+		AdicionaSeloDTO adicionaSeloDTO = new AdicionaSeloDTO("JAVA", aluno.getCPF());
 		
 		adicionarSeloAluno.adicionarSelo(adicionaSeloDTO);
 		

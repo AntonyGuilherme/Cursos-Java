@@ -1,4 +1,4 @@
-package br.com.alura.escola.academico.dominio.aluno;
+package br.com.alura.escola.shared.dominio;
 
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ public class CPF {
 	public void setCpf(String cpf) {
 		
 		if(!this.isCPFValido(cpf)) {
-			throw new IllegalArgumentException("O CPF é inválido!");
+			throw new IllegalArgumentException("O CPF ï¿½ invï¿½lido!");
 		}
 		
 		this.cpf = cpf;

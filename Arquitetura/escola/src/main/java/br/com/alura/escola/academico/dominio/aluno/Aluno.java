@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import br.com.alura.escola.academico.dominio.aluno.excessoes.AlunoNumeroDeTelefonesMaximoException;
+import br.com.alura.escola.shared.dominio.CPF;
 
 public class Aluno {
 

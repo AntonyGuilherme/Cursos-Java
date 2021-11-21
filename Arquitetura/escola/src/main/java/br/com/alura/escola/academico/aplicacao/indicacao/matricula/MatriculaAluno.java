@@ -1,10 +1,10 @@
 package br.com.alura.escola.academico.aplicacao.indicacao.matricula;
 
 import br.com.alura.escola.academico.dominio.aluno.Aluno;
-import br.com.alura.escola.academico.dominio.aluno.CPF;
 import br.com.alura.escola.academico.dominio.aluno.RepositorioDeAlunos;
 import br.com.alura.escola.academico.dominio.eventos.AlunoMatriculado;
-import br.com.alura.escola.academico.dominio.eventos.PublicadorDeEventos;
+import br.com.alura.escola.shared.dominio.CPF;
+import br.com.alura.escola.shared.dominio.evento.PublicadorDeEventos;
 
 public class MatriculaAluno {
 

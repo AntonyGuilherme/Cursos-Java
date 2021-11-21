@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.alura.escola.academico.dominio.aluno.Aluno;
-import br.com.alura.escola.academico.dominio.aluno.CPF;
 import br.com.alura.escola.academico.dominio.aluno.RepositorioDeAlunos;
 import br.com.alura.escola.academico.dominio.aluno.Telefone;
+import br.com.alura.escola.shared.dominio.CPF;
 
 public class RepositorioDeAlunosComJDBC implements RepositorioDeAlunos {
 

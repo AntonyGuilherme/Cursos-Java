@@ -1,10 +1,10 @@
-package br.com.alura.escola.academico.aluno;
+package br.com.alura.escola.shared;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.alura.escola.academico.dominio.aluno.CPF;
+import br.com.alura.escola.shared.dominio.CPF;
 
 class CPFTest {
 
